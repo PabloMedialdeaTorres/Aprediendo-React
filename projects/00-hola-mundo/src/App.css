@@ -1,0 +1,35 @@
+.article-grid{
+    display: flex;
+    align-items: center;
+}
+
+.header-article{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.avatar{
+    width: 48px;
+    height: 48px;
+    border-radius: 1000px;
+}
+
+.name{
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.tag{
+    color: white;
+    opacity: 0.4;
+}
+
+.follow-button{
+    margin-left: 10px;
+    border: none;
+    border-radius: 999px;
+    font-weight: bold;
+    padding: 6px 16px;
+}
