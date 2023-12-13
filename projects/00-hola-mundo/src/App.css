@@ -38,7 +38,10 @@
 }
 
 .follow-button.is-following{
-    border: 1px solid red
+    border: 1px solid rgb(255, 255, 255);
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    width: 135px;
 }
 
 .follow-button:hover{
@@ -46,6 +49,24 @@
 }
 
 .follow-button.is-following:hover{
-    border: 1px solid red;
-    background-color: red;
+    border: 1px solid rgba(255, 0, 0, 0.562);
+    background-color: rgba(168, 81, 81, 0.247);
+    color: red;
+    transition: .3 ease background-color;
+}
+
+.follow-button.is-following:hover .follow-button-stop-follow{
+    display: block;
+}
+
+.follow-button-stop-follow{
+    display: none;
+}
+
+.follow-button-text{
+    display: block;
+}
+
+.follow-button.is-following:hover .follow-button-text{
+    display: none;
 }
