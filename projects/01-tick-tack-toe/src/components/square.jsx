@@ -1,7 +1,9 @@
+import { TURNS } from "../constants/constants";
+
 export const Square = ({ children, isSelected, updateBoard, index }) => {
   const className = `square ${isSelected ? "is-selected" : ""}`;
   const classForPlayerColor =
-    children === "✖" ? "is-x" : children === "=" ? "is-tie" : "is-o";
+    children === TURNS.X ? "is-x" : children === "=" ? "is-tie" : "is-o";
 
   const handelClick = () => {
     updateBoard(index);
