@@ -83,7 +83,8 @@ body {
 
 .square.is-selected {
   border: 2px solid #09f;
-  transition: border .5s;
+  transform: scale(1.1);
+  transition: border .5s, transform .5s;
 }
 
 .winner {
@@ -138,7 +139,8 @@ body {
   background-clip: inherit;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; 
-  background-image: linear-gradient(90deg, rgba(153,255,11,1) 0%, rgba(78,255,25,1) 0%, rgba(0,212,255,1) 79%);
+  background-image: linear-gradient(135deg, rgba(153,255,11,1) 0%, rgba(78,255,25,1) 0%, rgba(0,212,255,1) 79%);
+  transition: background-image .5s;
 }
 
 .is-o{
@@ -148,7 +150,7 @@ body {
   background-clip: inherit;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; 
-  background-image: linear-gradient(90deg, rgba(153,255,11,1) 0%, rgba(255,25,25,1) 0%, rgba(252,255,0,1) 79%);
+  background-image: linear-gradient(40deg, rgba(153,255,11,1) 0%, rgba(255,25,25,1) 0%, rgba(252,255,0,1) 79%);
 }
 
 .is-tie{
@@ -159,4 +161,13 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; 
   background-image: linear-gradient(90deg, rgba(153,255,11,1) 0%, rgba(25,219,255,1) 0%, rgba(255,0,236,1) 79%);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.2s ease-in;
 }

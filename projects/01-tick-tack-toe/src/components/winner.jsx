@@ -2,7 +2,7 @@ export function Winner({ winner, restart, Square }) {
   if (winner === null) {
     return null;
   }
-  const winnerText = winner === false ? "Tie" : "Won";
+  const winnerText = winner === false ? "Tie!" : "Won!";
 
   return (
     <section className="winner">

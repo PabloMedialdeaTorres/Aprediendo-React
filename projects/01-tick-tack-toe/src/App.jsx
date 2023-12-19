@@ -21,11 +21,14 @@ function App() {
 
   // null es que no hay ganador, false es que hay empate
   const [winner, setWinner] = useState(null);
+  const [resetFadeIn, setResetFadeIn] = useState(false);
 
   const restart = () => {
     setBoard(Array(9).fill(null));
-    setTurn(winner);
+    winner ? setTurn(winner) : setTurn(TURNS.X);
     setWinner(null);
+    setResetFadeIn(true);
+    setTimeout(() => setResetFadeIn(false), 100);
     window.localStorage.removeItem("board");
     window.localStorage.removeItem("turn");
   };
@@ -62,7 +65,11 @@ function App() {
     <main className="board">
       <h1>Tic tac toe</h1>
       <button onClick={restart}>Restart</button>
-      <Board board={board} updateBoard={updateBoard}></Board>
+      <Board
+        board={board}
+        updateBoard={updateBoard}
+        resetFadeIn={resetFadeIn}
+      ></Board>
       <section className="turn">
         <Square isSelected={turn === TURNS.X}>{TURNS.X}</Square>
         <Square isSelected={turn === TURNS.O}>{TURNS.O} </Square>
