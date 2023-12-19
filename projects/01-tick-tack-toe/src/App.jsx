@@ -54,6 +54,18 @@ function App() {
     return null;
   };
 
+  const restart = () => {
+    setBoard(Array(9).fill(null));
+    setTurn(TURNS.X);
+    setWinner(null);
+  };
+
+  const checkEndGame = (newBoard) => {
+    // check si hay no hay mas espacios vacios
+    // newBoard = [null, null, null, null, null, null, null, null, null]
+    return newBoard.every((square) => square != null);
+  };
+
   const updateBoard = (index) => {
     // si ya tiene algo no hagas nada
     if (board[index] || winner) {
@@ -72,17 +84,20 @@ function App() {
     const newWinner = checkWinner(newBoard);
     if (newWinner) {
       setWinner(newWinner);
+    } else if (checkEndGame(newBoard)) {
+      setWinner(false); // tie
     }
   };
 
   return (
     <main className="board">
       <h1>Tic tac toe</h1>
+      <button onClick={restart}>Restart</button>
       <section className="game">
-        {board.map((_, index) => {
+        {board.map((square, index) => {
           return (
             <Square key={index} updateBoard={updateBoard} index={index}>
-              {board[index]}
+              {square}
             </Square>
           );
         })}
@@ -91,6 +106,20 @@ function App() {
         <Square isSelected={turn === TURNS.X}>{TURNS.X}</Square>
         <Square isSelected={turn === TURNS.O}>{TURNS.O} </Square>
       </section>
+      {winner != null && (
+        <section className="winner">
+          <div className="text">
+            <h2>{winner === false ? "Tie" : "Won"}</h2>
+            <header className="win">
+              {winner && <Square>{winner}</Square>}
+              {winner === false && <Square>{"="}</Square>}
+            </header>
+            <footer>
+              <button onClick={restart}>Restart</button>
+            </footer>
+          </div>
+        </section>
+      )}
     </main>
   );
 }
